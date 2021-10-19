@@ -2,15 +2,16 @@ import React from "react";
 import Header from "./component/Header/Header";
 import Footer from "./component/Footer/Footer";
 import Layout from "./Layout/Layout";
-import Navbar from "./component/Navbar/Navbar";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Header />
-      <Navbar />
-      <Layout />
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Layout />
+        <Footer />
+      </BrowserRouter>
     </>
   );
 }
