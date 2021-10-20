@@ -8,7 +8,7 @@ export default function useMovieDB(endpoint, option) {
     setLoading(true);
     fetch(
       `https://api.themoviedb.org/3/${endpoint}?api_key=b97ee4b164b607d5e4e00130b6fb4e67&
-      ${new URLSearchParams(option?.query).toString()}`
+      ${option}`
     )
       .then((r) => r.json())
       .then((d) => {

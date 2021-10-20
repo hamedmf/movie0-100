@@ -1,29 +1,31 @@
 import useMovieDB from "hook/useMovieDB";
 import React from "react";
+import "swiper/swiper-bundle.css"
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Card, Badge, Row, Col } from "antd";
+import { Badge, Card } from "antd";
 import { VideoCameraOutlined } from "@ant-design/icons";
-import { Spin, Space } from "antd";
-const { Meta } = Card;
+import SwiperCore, {
+  Pagination,
+  Navigation,
+  Autoplay,
+  Keyboard
+} from 'swiper';
 
+const { Meta } = Card;
 export default function MovieSwiper() {
   const { data, loading } = useMovieDB("movie/popular");
-  console.log(data, loading);
 
-  return (
-    <>
-      <div className="TitlePopPlace">
-        <h2>
-          Popular Movies On <span>NetFlix</span>
-        </h2>
-      </div>
-      <div className="PopularMoviesSlider">
-        <Swiper
+
+    SwiperCore.use([Pagination,Navigation,Autoplay,Keyboard])
+    return (
+
+      <>
+    <Swiper
           spaceBetween={30}
           slidesPerGroup={2}
           navigation={true}
           keyboard={true}
-          autoplay={{ delay: 3000 }}
+          autoplay={{ delay: 1000 }}
           className="mySwiper"
           breakpoints={{
             // when window width is >= 640px
@@ -41,7 +43,7 @@ export default function MovieSwiper() {
           {loading ? (
             <h1>Loading...</h1>
           ) : (
-            data.results.map((movie) => (
+            data?.results.map((movie) => (
               <SwiperSlide key={movie.id}>
                 <Card
                   hoverable
@@ -74,7 +76,8 @@ export default function MovieSwiper() {
             ))
           )}
         </Swiper>
-      </div>
     </>
-  );
+
+    )
+ 
 }
