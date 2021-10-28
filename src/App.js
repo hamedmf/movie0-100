@@ -3,7 +3,7 @@ import Header from "./component/Header/Header";
 import Footer from "./component/Footer/Footer";
 import Layout from "./Layout/Layout";
 import { BrowserRouter } from "react-router-dom";
-import "swiper/swiper-bundle.css"
+import "./style.css";
 function App() {
   return (
     <>

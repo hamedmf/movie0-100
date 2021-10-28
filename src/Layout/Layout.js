@@ -1,3 +1,4 @@
+import SingleMoviePage from "component/SingleMoviePage/SingleMoviePage";
 import React from "react";
 import { Route, Switch } from "react-router";
 import About from "../page/About";
@@ -15,6 +16,9 @@ export default function Layout() {
       </Route>
       <Route path="/contact">
         <Contact />
+      </Route>
+      <Route path="/movie/:id">
+        <SingleMoviePage />
       </Route>
     </Switch>
   );

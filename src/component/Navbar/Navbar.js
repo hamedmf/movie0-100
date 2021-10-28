@@ -7,7 +7,7 @@ const { Header, Content, Footer } = Layout;
 export default function Navbar() {
   return (
     <>
-      <Layout className="layout">
+      <Layout className="layout" theme="light">
         <Header>
           <div className="logo" />
           <Menu theme="light" mode="horizontal" defaultSelectedKeys={["2"]}>
@@ -22,17 +22,6 @@ export default function Navbar() {
             </Menu.Item>
           </Menu>
         </Header>
-        <Content style={{ padding: "0 50px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item key={"home"}>Home</Breadcrumb.Item>
-            <Breadcrumb.Item key={"List"}>List</Breadcrumb.Item>
-            <Breadcrumb.Item key={"App"}>App</Breadcrumb.Item>
-          </Breadcrumb>
-          <div className="site-layout-content">Content</div>
-        </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
       </Layout>
       <Searchbar />
     </>

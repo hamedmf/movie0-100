@@ -1,57 +1,19 @@
 import React from "react";
 import { Input, Space } from "antd";
-import container from "./Searchbar"
+import container from "./Searchbar.module.scss";
 
 const { Search } = Input;
 export default function Searchbar() {
-  const onSearch = (value) => console.log(value);
   return (
-    <div>
-      <Space direction="vertical">
+    <div className={container.search}>
+      <Space direction="vertical" className={container.searchitem}>
         <Search
+          className={container.searchelement}
+          style={{ height: "200" }}
           placeholder="input search text"
-          onSearch={onSearch}
           enterButton
         />
       </Space>
     </div>
   );
 }
-
-// import { Input, Space } from 'antd';
-// import { AudioOutlined } from '@ant-design/icons';
-
-// const { Search } = Input;
-
-// const suffix = (
-//   <AudioOutlined
-//     style={{
-//       fontSize: 16,
-//       color: '#1890ff',
-//     }}
-//   />
-// );
-
-// const onSearch = value => console.log(value);
-
-// ReactDOM.render(
-//   <Space direction="vertical">
-//     <Search placeholder="input search text" onSearch={onSearch} style={{ width: 200 }} />
-//     <Search placeholder="input search text" allowClear onSearch={onSearch} style={{ width: 200 }} />
-//     <Search placeholder="input search text" onSearch={onSearch} enterButton />
-//     <Search
-//       placeholder="input search text"
-//       allowClear
-//       enterButton="Search"
-//       size="large"
-//       onSearch={onSearch}
-//     />
-//     <Search
-//       placeholder="input search text"
-//       enterButton="Search"
-//       size="large"
-//       suffix={suffix}
-//       onSearch={onSearch}
-//     />
-//   </Space>,
-//   mountNode,

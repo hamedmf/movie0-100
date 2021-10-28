@@ -1,50 +1,45 @@
 import useMovieDB from "hook/useMovieDB";
 import React from "react";
-import "swiper/swiper-bundle.css"
+import "swiper/swiper-bundle.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Badge, Card } from "antd";
 import { VideoCameraOutlined } from "@ant-design/icons";
-import SwiperCore, {
-  Pagination,
-  Navigation,
-  Autoplay,
-  Keyboard
-} from 'swiper';
+import SwiperCore, { Pagination, Navigation, Autoplay, Keyboard } from "swiper";
+import { Link } from "react-router-dom";
 
 const { Meta } = Card;
 export default function MovieSwiper() {
-  const { data, loading } = useMovieDB("movie/popular");
+  const { data, loading } = useMovieDB("movie/top_rated", "page=10");
 
-
-    SwiperCore.use([Pagination,Navigation,Autoplay,Keyboard])
-    return (
-
-      <>
-    <Swiper
-          spaceBetween={30}
-          slidesPerGroup={2}
-          navigation={true}
-          keyboard={true}
-          autoplay={{ delay: 1000 }}
-          className="mySwiper"
-          breakpoints={{
-            // when window width is >= 640px
-            300: {
-              width: 300,
-              slidesPerView: 1,
-            },
-            // when window width is >= 768px
-            768: {
-              width: 768,
-              slidesPerView: 3,
-            },
-          }}
-        >
-          {loading ? (
-            <h1>Loading...</h1>
-          ) : (
-            data?.results.map((movie) => (
-              <SwiperSlide key={movie.id}>
+  SwiperCore.use([Pagination, Navigation, Autoplay, Keyboard]);
+  return (
+    <>
+      <Swiper
+        spaceBetween={30}
+        slidesPerGroup={2}
+        navigation={true}
+        keyboard={true}
+        autoplay={{ delay: 1000 }}
+        className="mySwiper"
+        breakpoints={{
+          // when window width is >= 640px
+          300: {
+            width: 300,
+            slidesPerView: 1,
+          },
+          // when window width is >= 768px
+          768: {
+            width: 768,
+            slidesPerView: 3,
+          },
+        }}
+      >
+        {loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          data?.results.map((movie) => (
+            <SwiperSlide key={movie.id}>
+              <Link to={`movie/${movie.id}`}>
                 <Card
                   hoverable
                   style={{ width: "100%", borderRadius: 25 }}
@@ -72,12 +67,11 @@ export default function MovieSwiper() {
                     }
                   />
                 </Card>
-              </SwiperSlide>
-            ))
-          )}
-        </Swiper>
+              </Link>
+            </SwiperSlide>
+          ))
+        )}
+      </Swiper>
     </>
-
-    )
- 
+  );
 }
